@@ -1,7 +1,7 @@
 <template>
     <div class="error-message">
         <!-- Error Icon -->
-        <i class="material-icons error-message-icon" aria-hidden="true">error</i>
+        <v-icon name="alert-circle  error-message-icon"/>
 
         <!-- Error Description -->
         <pre class="error-message-description">{{error}}</pre>
@@ -13,7 +13,7 @@
     text-align: center
 
 .error-message-icon
-    font-size: 128px
+    width: 128px
     color: var(--text)
     margin-bottom: 30px
 

@@ -8,7 +8,7 @@
                 :title="muted ? (translations[lang()] && translations[lang()].unMuteTitle) || translations[config.fallback_lang].unMuteTitle : (translations[lang()] && translations[lang()].muteTitle) || translations[config.fallback_lang].muteTitle"
                 :aria-label="muted ? (translations[lang()] && translations[lang()].unMuteTitle) || translations[config.fallback_lang].unMuteTitle : (translations[lang()] && translations[lang()].muteTitle) || translations[config.fallback_lang].muteTitle"
                 @click="muted = !muted">
-                <i aria-hidden="true" class="material-icons">{{muted ? 'volume_off': 'volume_up'}}</i>
+                <v-icon :name="muted ? 'volume-x': 'volume-2'"/>
             </button>
         </TopHead>
         <section class="chat">
@@ -332,20 +332,41 @@
 <style lang="sass">
 @import '@/style/theme.sass'
 
+html
+    box-sizing: border-box
+    font-size: 16px
+    margin: 0
+    padding: 0
+
 body
     margin: 0
     padding: 0
+    font-size: 100%
     font-family: var(--font)
     font-display: swap
     background-color: var(--background)
 
-.chat
-    max-width: 500px
+*,
+*:before,
+*:after
+    box-sizing: inherit
+
+*
+  outline: 0
+  font-family: inherit
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+#app
+    max-width: var(--chat-width)
     margin: auto auto
-    padding: 0 12px
     position: relative
-    padding-top: 68px
-    padding-bottom: 125px
+
+.chat
+    min-height: 100vh
+    position: relative
+    padding: 72px 16px 124px 12px
+    box-shadow: var(--shadow)
 </style>
 
 <script>
@@ -436,7 +457,7 @@ export default {
     watch: {
         /* This function is triggered, when new messages arrive */
         messages(messages){
-            if (this.history()) sessionStorage.setItem('message_history', JSON.stringify(messages)) // <- Save history if the feature is enabled
+            if (this.history()) sessionStorage.setItem('@gipsy:message_history', JSON.stringify(messages)) // <- Save history if the feature is enabled
         },
         /* This function is triggered, when request is started or finished */
         loading(){
@@ -451,30 +472,30 @@ export default {
     },
     created(){
         /* If history is enabled, the messages are retrieved from sessionStorage */
-        if (this.history() && sessionStorage.getItem('message_history') !== null){
-            this.messages = JSON.parse(sessionStorage.getItem('message_history'))
+        if (this.history() && sessionStorage.getItem('@gipsy:message_history') !== null){
+            this.messages = JSON.parse(sessionStorage.getItem('@gipsy:message_history'))
         }
 
         /* Session should be persistent (in case of page reload, the context should stay) */
-        if (this.history() && sessionStorage.getItem('session') !== null){
-            this.session = sessionStorage.getItem('session')
+        if (this.history() && sessionStorage.getItem('@gipsy:session') !== null){
+            this.session = sessionStorage.getItem('@gipsy:session')
         }
 
         else {
             this.session = uuidv1()
-            if (this.history()) sessionStorage.setItem('session', this.session)
+            if (this.history()) sessionStorage.setItem('@gipsy:session', this.session)
         }
 
         /* Cache Agent (this will save bandwith) */
-        if (this.history() && sessionStorage.getItem('agent') !== null){
-            this.agent = JSON.parse(sessionStorage.getItem('agent'))
+        if (this.history() && sessionStorage.getItem('@gipsy:agent') !== null){
+            this.agent = JSON.parse(sessionStorage.getItem('@gipsy:agent'))
         }
 
         else {
             this.client.get()
             .then(agent => {
                 this.agent = agent
-                if (this.history()) sessionStorage.setItem('agent', JSON.stringify(agent))
+                if (this.history()) sessionStorage.setItem('@gipsy:agent', JSON.stringify(agent))
             })
             .catch(error => {
                 this.error = error.message

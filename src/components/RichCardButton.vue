@@ -1,7 +1,7 @@
 <template>
     <a class="rich-card-button" target="_blank" rel="noopener noreferrer" :href="uri">
-        <i class="material-icons rich-card-button-icon" aria-hidden="true">{{uri ? 'arrow_forward' : 'reply'}}</i>
         <span class="rich-card-button-title">{{title}}</span>
+        <v-icon  class="rich-card-button-icon" :class="uri ? 'external-link' : 'corner-up-left'"></v-icon>
     </a>
 </template>
 
@@ -24,8 +24,8 @@
         color: var(--accent)
 
 .rich-card-button-icon
-    left: 0
-    margin-left: 12px
+    right: 0
+    margin-right: 12px
     position: absolute
 </style>
 

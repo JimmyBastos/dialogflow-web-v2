@@ -16,7 +16,7 @@
                 <option :value="agent.defaultLanguageCode">{{agent.defaultLanguageCode | toLang}}</option>
                 <option v-for="language in agent.supportedLanguageCodes" :key="language" :value="language">{{language | toLang}}</option>
             </select>
-            <i aria-hidden="true" class="material-icons">arrow_drop_down</i>
+            <v-icon class="icon" name="chevron-down"/>
         </div>
     </div>
 </template>
@@ -59,12 +59,13 @@
     select
         @include reset
         width: 100%
-        padding: 8px 12px
+        padding: 8px 16px
         margin-right: -24px
         padding-right: 24px
 
-    i
+    .icon
         pointer-events: none
+        margin-right: 8px
 </style>
 
 <script>
@@ -92,7 +93,7 @@ export default {
     watch: {
         /* Save selected language */
         sel_lang(lang){
-            if (this.history()) sessionStorage.setItem('lang', lang)
+            if (this.history()) sessionStorage.setItem('@gipsy:lang', lang)
             else {
                 this.config.fallback_lang = lang
             }

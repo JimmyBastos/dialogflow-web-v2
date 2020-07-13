@@ -24,7 +24,7 @@
                         :title="(translations[lang()] && translations[lang()].sendTitle) || translations[config.fallback_lang].sendTitle"
                         :aria-label="(translations[lang()] && translations[lang()].sendTitle) || translations[config.fallback_lang].sendTitle"
                         @click="submit({text: query})">
-                        <i class="material-icons" aria-hidden="true">arrow_upward</i>
+                        <v-icon name="send"/>
                     </button>
 
                     <!-- Microphone Button -->
@@ -36,7 +36,7 @@
                         :title="(translations[lang()] && translations[lang()].microphoneTitle) || translations[config.fallback_lang].microphoneTitle"
                         :class="{'mic_active': microphone}"
                         @click="microphone = !microphone">
-                        <i class="material-icons" aria-hidden="true">mic</i>
+                       <v-icon name="mic"/>
                     </button>
                 </transition>
             </div>
@@ -52,10 +52,11 @@
     bottom: 0
     left: 0
     width: 100%
-    background-color: var(--background)
 
 .chat-field-container
-    max-width: 500px
+    background-color: var(--background)
+    border-top: 1px solid var(--border)
+    max-width: var(--chat-width)
     margin: auto auto
     padding: 12px
 
@@ -75,7 +76,6 @@
     font-size: 16px
     font-weight: 500
     width: 100%
-    box-sizing: border-box
     border: none
     padding: 10px 12px
     color: var(--text)
@@ -92,8 +92,8 @@
     margin-left: 6px
     border-radius: 50%
     cursor: pointer
-    background-color: var(--element-background)
-    color: var(--text)
+    background-color: var(--primary)
+    color: var(--text-lighter)
     font-size: 24px
     display: flex
 
