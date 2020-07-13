@@ -10,6 +10,17 @@
         "selectLanguageTitle": "Language",
         "noContent": "No content"
     },
+    "pt": {
+      "muteTitle": "Desativar som",
+      "unMuteTitle": "Ativar som",
+      "inputTitle": "Mensagem",
+      "sendTitle": "Enviar",
+      "microphoneTitle": "Digitação por voz",
+      "recognitionUnavailable": "Reconhecimento de voz indisponível",
+      "poweredBy": "Feito com",
+      "selectLanguageTitle": "Idioma",
+      "noContent": "Sem conteúdo"
+  },
     "ru": {
         "muteTitle": "Звук",
         "unMuteTitle": "Без звука",
