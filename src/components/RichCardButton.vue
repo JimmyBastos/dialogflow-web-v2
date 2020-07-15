@@ -1,7 +1,7 @@
 <template>
     <a class="rich-card-button" target="_blank" rel="noopener noreferrer" :href="uri">
         <span class="rich-card-button-title">{{title}}</span>
-        <v-icon  class="rich-card-button-icon" :class="uri ? 'external-link' : 'corner-up-left'"></v-icon>
+        <v-icon class="rich-card-button-icon" :class="uri ? 'external-link' : 'corner-up-left'" />
     </a>
 </template>
 

@@ -8,7 +8,7 @@
                 :title="muted ? (translations[lang()] && translations[lang()].unMuteTitle) || translations[config.fallback_lang].unMuteTitle : (translations[lang()] && translations[lang()].muteTitle) || translations[config.fallback_lang].muteTitle"
                 :aria-label="muted ? (translations[lang()] && translations[lang()].unMuteTitle) || translations[config.fallback_lang].unMuteTitle : (translations[lang()] && translations[lang()].muteTitle) || translations[config.fallback_lang].muteTitle"
                 @click="muted = !muted">
-                <v-icon :name="muted ? 'volume-x': 'volume-2'"/>
+                <v-icon :name="muted ? 'volume-x': 'volume-2'" />
             </button>
         </TopHead>
         <section class="chat">
@@ -481,11 +481,6 @@ export default {
             this.session = sessionStorage.getItem('@gipsy:session')
         }
 
-        else {
-            this.session = uuidv1()
-            if (this.history()) sessionStorage.setItem('@gipsy:session', this.session)
-        }
-
         /* Cache Agent (this will save bandwith) */
         if (this.history() && sessionStorage.getItem('@gipsy:agent') !== null){
             this.agent = JSON.parse(sessionStorage.getItem('@gipsy:agent'))
@@ -495,7 +490,9 @@ export default {
             this.client.get()
             .then(agent => {
                 this.agent = agent
+                this.session = agent.session
                 if (this.history()) sessionStorage.setItem('@gipsy:agent', JSON.stringify(agent))
+                if (this.history()) sessionStorage.setItem('@gipsy:session', this.session)
             })
             .catch(error => {
                 this.error = error.message

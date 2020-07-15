@@ -1,15 +1,15 @@
 <template>
     <header class="top-head">
         <div class="top-head-container">
-          <img v-if="agent.avatarUri" class="top-head-icon" :alt="agent.displayName" :src="agent.avatarUri">
-          <img v-else class="agent-icon" src="https://console.dialogflow.com/api-client/assets/img/logo-short.png" :alt="agent.displayName">
-          <div class="top-head-info">
-              <div class="top-head-title">{{agent.displayName}}</div>
-              <div class="top-head-subtitle">
-                Atendimento via chat
-              </div>
-          </div>
-          <slot />
+            <img v-if="agent.avatarUri" class="top-head-icon" :alt="agent.displayName" :src="agent.avatarUri">
+            <img v-else class="agent-icon" src="https://console.dialogflow.com/api-client/assets/img/logo-short.png" :alt="agent.displayName">
+            <div class="top-head-info">
+                <div class="top-head-title">{{agent.displayName}}</div>
+                <div class="top-head-subtitle">
+                    Atendimento via chat
+                </div>
+            </div>
+            <slot />
         </div>
     </header>
 </template>

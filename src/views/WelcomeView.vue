@@ -16,7 +16,7 @@
                 <option :value="agent.defaultLanguageCode">{{agent.defaultLanguageCode | toLang}}</option>
                 <option v-for="language in agent.supportedLanguageCodes" :key="language" :value="language">{{language | toLang}}</option>
             </select>
-            <v-icon class="icon" name="chevron-down"/>
+            <v-icon class="icon" name="chevron-down" />
         </div>
     </div>
 </template>

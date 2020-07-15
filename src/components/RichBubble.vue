@@ -1,15 +1,15 @@
 <template>
     <div class="rich-bubble-container">
-      <div v-if="!me" class="rich-bubble-avatar">
-        <img :src="avatarUri ||require('@/assets/img/avatar.png')" alt="Avatar">
-      </div>
-      <div
-        class="rich-bubble"
-        tabindex="0"
-        :class="{'me': me, 'loading': loading}"
-      >
-        {{text}}
-      </div>
+        <div v-if="!me" class="rich-bubble-avatar">
+            <img :src="avatarUri ||require('@/assets/img/avatar.png')" alt="Avatar">
+        </div>
+        <div
+            class="rich-bubble"
+            tabindex="0"
+            :class="{'me': me, 'loading': loading}"
+        >
+            {{text}}
+        </div>
     </div>
 </template>
 
@@ -89,8 +89,9 @@ export default {
     name: 'RichBubble',
     props: {
         avatarUri: {
-          type: String,
-          required: false
+            type: String,
+            required: false,
+            default: ''
         },
 
         text: {

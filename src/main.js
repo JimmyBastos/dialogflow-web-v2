@@ -12,17 +12,17 @@ Vue.prototype.config = config // <- set config to global scope
 Vue.prototype.translations = translations // <- set translations to global scope
 
 Vue.use(vIcon, {
-  name: 'v-icon',
-  props: {
-    baseClass: {
-        type: String,
-        default: 'v-icon'
-    },
-    classPrefix: {
-        type: String,
-        default: 'v-icon-'
+    name: 'v-icon',
+    props: {
+        baseClass: {
+            type: String,
+            default: 'v-icon'
+        },
+        classPrefix: {
+            type: String,
+            default: 'v-icon-'
+        }
     }
-  }
 })
 
 /* (global) This code is going to tell us, if history mode can be activated on the client, so the application can be consumed without sessionStorage */

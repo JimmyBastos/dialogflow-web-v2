@@ -1,7 +1,7 @@
 <template>
     <div class="error-message">
         <!-- Error Icon -->
-        <v-icon name="alert-circle  error-message-icon"/>
+        <v-icon name="alert-circle  error-message-icon" />
 
         <!-- Error Description -->
         <pre class="error-message-description">{{error}}</pre>

@@ -24,7 +24,7 @@
                         :title="(translations[lang()] && translations[lang()].sendTitle) || translations[config.fallback_lang].sendTitle"
                         :aria-label="(translations[lang()] && translations[lang()].sendTitle) || translations[config.fallback_lang].sendTitle"
                         @click="submit({text: query})">
-                        <v-icon name="send"/>
+                        <v-icon name="send" />
                     </button>
 
                     <!-- Microphone Button -->
@@ -36,7 +36,7 @@
                         :title="(translations[lang()] && translations[lang()].microphoneTitle) || translations[config.fallback_lang].microphoneTitle"
                         :class="{'mic_active': microphone}"
                         @click="microphone = !microphone">
-                       <v-icon name="mic"/>
+                        <v-icon name="mic" />
                     </button>
                 </transition>
             </div>
@@ -88,14 +88,17 @@
 
 .chat-field-action
     @include reset
-    padding: 8px
     margin-left: 6px
     border-radius: 50%
     cursor: pointer
     background-color: var(--primary)
     color: var(--text-lighter)
     font-size: 24px
+    width: 48px
+    height: 48px
     display: flex
+    align-items: center
+    justify-content: center
 
     &.mic_active
         background-color: #F44336
